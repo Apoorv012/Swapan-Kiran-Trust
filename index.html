@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hope For Education | NGO</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter&display=swap"
@@ -57,11 +58,7 @@
 <body class="bg-white text-gray-800 text-base leading-relaxed">
 
   <!-- Navbar -->
-  <!-- Add Alpine.js CDN in <head> -->
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-
-  <!-- Navbar -->
-  <nav class="bg-amber-500 text-white px-4 py-3" x-data="{ open: false }">
+  <nav class="bg-amber-500 text-white px-4 py-3 shadow-md" x-data="{ open: false }">
     <div class="flex justify-between items-center">
       <!-- Logo or Menu items -->
       <div class="hidden sm:flex space-x-6 text-lg font-medium">
@@ -69,7 +66,7 @@
         <a href="/about.html" class="hover:text-black">About Us</a>
         <a href="/contact.html" class="hover:text-black">Contact Us</a>
       </div>
-
+  
       <!-- Trust Name -->
       <div class="text-xl font-semibold sm:ml-auto">Swapan Kiran Trust</div>
 
@@ -80,12 +77,12 @@
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
         <svg x-show="open" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
-          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
     </div>
-
+  
     <!-- Mobile Menu -->
     <div x-show="open" x-transition class="sm:hidden mt-4 space-y-2 text-lg font-medium">
       <a href="/" class="block px-2 py-1 hover:bg-amber-600 rounded">Home</a>
@@ -263,19 +260,19 @@
       </div>
     </div>
   </section>
-<script>
-  // Pause other videos when one is played in the Recent Impact section
-  document.addEventListener('DOMContentLoaded', function () {
-    const videos = document.querySelectorAll('#blog video');
-    videos.forEach(video => {
-      video.addEventListener('play', function () {
-        videos.forEach(v => {
-          if (v !== video) v.pause();
+  <script>
+    // Pause other videos when one is played in the Recent Impact section
+    document.addEventListener('DOMContentLoaded', function () {
+      const videos = document.querySelectorAll('#blog video');
+      videos.forEach(video => {
+        video.addEventListener('play', function () {
+          videos.forEach(v => {
+            if (v !== video) v.pause();
+          });
         });
       });
     });
-  });
-</script>
+  </script>
 
   <!-- Moments of Joy Section -->
   <section class="bg-gradient-to-br from-yellow-50 via-white to-amber-50 py-20 px-6" data-aos="fade-up">
@@ -454,7 +451,7 @@
       <!-- WhatsApp Button with Subtitle and Icon -->
       <div class="flex flex-col items-center md:items-start space-y-2">
         <span class="font-semibold mb-1">Questions? Message us on WhatsApp!</span>
-        <a href="https://wa.me/9560861710?text=Hello%20World" target="_blank"
+        <a href="https://wa.me/9648087903?text=Hi" target="_blank"
           class="inline-flex items-center bg-white text-amber-600 font-semibold px-5 py-2 rounded-full shadow-md hover:bg-amber-50 hover:scale-105 transform transition-all duration-300">
           <svg class="w-5 h-5 mr-2" viewBox="0 0 32 32" fill="currentColor">
             <path

@@ -38,6 +38,7 @@
       opacity: 0;
     }
   </style>
+
   <!-- Open Graph / Facebook / Twitter Meta Tags -->
   <meta property="og:title" content="Hope For Education | NGO">
   <meta property="og:description"
@@ -55,6 +56,46 @@
 
 <body class="bg-white text-gray-800 text-base leading-relaxed">
 
+  <!-- Navbar -->
+  <!-- Add Alpine.js CDN in <head> -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+  <!-- Navbar -->
+  <nav class="bg-amber-500 text-white px-4 py-3" x-data="{ open: false }">
+    <div class="flex justify-between items-center">
+      <!-- Logo or Menu items -->
+      <div class="hidden sm:flex space-x-6 text-lg font-medium">
+        <a href="/" class="hover:text-black">Home</a>
+        <a href="/about.html" class="hover:text-black">About Us</a>
+        <a href="/contact.html" class="hover:text-black">Contact Us</a>
+      </div>
+
+      <!-- Trust Name -->
+      <div class="text-xl font-semibold sm:ml-auto">Swapan Kiran Trust</div>
+
+      <!-- Hamburger -->
+      <button @click="open = !open" class="sm:hidden focus:outline-none ml-4">
+        <svg x-show="!open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg x-show="open" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div x-show="open" x-transition class="sm:hidden mt-4 space-y-2 text-lg font-medium">
+      <a href="/" class="block px-2 py-1 hover:bg-amber-600 rounded">Home</a>
+      <a href="/about.html" class="block px-2 py-1 hover:bg-amber-600 rounded">About Us</a>
+      <a href="/contact.html" class="block px-2 py-1 hover:bg-amber-600 rounded">Contact Us</a>
+    </div>
+  </nav>
+
+
+  <!-- Donate Now Section -->
   <section class="relative bg-yellow-100 py-20 px-6 text-center overflow-hidden" data-aos="fade-in"
     data-aos-duration="1200">
     <div class="absolute inset-0 z-0">
@@ -362,6 +403,7 @@
     });
   </script>
 
+  <!-- Footer -->
   <footer class="bg-amber-600 text-white py-8 border-t border-amber-700">
     <div
       class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center md:items-start text-center md:text-left space-y-6 md:space-y-0">

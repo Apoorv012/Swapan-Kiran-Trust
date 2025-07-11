@@ -60,16 +60,14 @@
   <!-- Navbar -->
   <nav class="bg-amber-500 text-white px-4 py-3 shadow-md" x-data="{ open: false }">
     <div class="flex justify-between items-center">
-      <!-- Logo or Menu items -->
-      <div class="hidden sm:flex space-x-6 text-lg font-medium">
+      <!-- Trust Name on the left -->
+      <div class="text-xl font-semibold">Swapan Kiran Trust</div>
+      <!-- Navigation links on the right -->
+      <div class="hidden sm:flex space-x-6 text-lg font-medium ml-auto">
         <a href="/" class="hover:text-black">Home</a>
         <a href="/about.html" class="hover:text-black">About Us</a>
         <a href="/contact.html" class="hover:text-black">Contact Us</a>
       </div>
-  
-      <!-- Trust Name -->
-      <div class="text-xl font-semibold sm:ml-auto">Swapan Kiran Trust</div>
-
       <!-- Hamburger -->
       <button @click="open = !open" class="sm:hidden focus:outline-none ml-4">
         <svg x-show="!open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
@@ -82,7 +80,6 @@
         </svg>
       </button>
     </div>
-  
     <!-- Mobile Menu -->
     <div x-show="open" x-transition class="sm:hidden mt-4 space-y-2 text-lg font-medium">
       <a href="/" class="block px-2 py-1 hover:bg-amber-600 rounded">Home</a>

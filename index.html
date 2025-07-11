@@ -263,6 +263,19 @@
       </div>
     </div>
   </section>
+<script>
+  // Pause other videos when one is played in the Recent Impact section
+  document.addEventListener('DOMContentLoaded', function () {
+    const videos = document.querySelectorAll('#blog video');
+    videos.forEach(video => {
+      video.addEventListener('play', function () {
+        videos.forEach(v => {
+          if (v !== video) v.pause();
+        });
+      });
+    });
+  });
+</script>
 
   <!-- Moments of Joy Section -->
   <section class="bg-gradient-to-br from-yellow-50 via-white to-amber-50 py-20 px-6" data-aos="fade-up">
@@ -412,7 +425,6 @@
       <div>
         <h2 class="text-xl font-semibold">Swapan Kiran Trust</h2>
         <p class="mt-2 text-sm leading-relaxed">
-          S/O: Ashok Gupta,<br>
           Badahar Kala, Harraiya,<br>
           Basti, Uttar Pradesh - 272155
         </p>

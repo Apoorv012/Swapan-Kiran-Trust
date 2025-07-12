@@ -27,6 +27,38 @@
     .main_title {
       font-family: 'Merriweather', serif;
     }
+
+    /* Page transition effects */
+    .page-content {
+      opacity: 0;
+      animation: fadeIn 0.3s ease-in-out forwards;
+    }
+
+    .no-animation {
+      animation: none !important;
+      opacity: 1 !important;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Prevent flash of unstyled content */
+    .page-loading {
+      opacity: 0;
+    }
+
+    .page-loaded {
+      opacity: 1;
+      transition: opacity 0.3s ease-in-out;
+    }
   </style>
 
   <!-- Open Graph / Facebook / Twitter Meta Tags -->
@@ -47,7 +79,7 @@
 <body class="min-h-screen flex flex-col bg-amber-50 text-gray-800 text-base leading-relaxed">
 
   <!-- Navbar -->
-  <nav class="bg-gradient-to-r from-amber-500 to-amber-400 text-white px-8 py-4 shadow-lg" x-data="{ open: false }">
+  <nav class="bg-gradient-to-r from-amber-500 to-amber-400 text-white px-8 py-4 shadow-lg no-animation" x-data="{ open: false }">
     <div class="flex justify-between items-center">
       <!-- Trust Name on the left -->
       <div class="main_title text-amber-700 text-lg md:text-xl font-extrabold tracking-tight">Swapan Kiran Trust</div>
@@ -77,7 +109,7 @@
     </div>
   </nav>
 
-  <main class="flex-1 flex items-center justify-center px-4">
+  <main class="flex-1 flex items-center justify-center px-4 page-loading">
     <section class="w-full max-w-2xl mx-auto py-12">
       <h1 class="text-3xl font-bold mb-6 text-center text-amber-600">Contact Us</h1>
       <div class="bg-white p-8 shadow-lg rounded-lg flex flex-col items-center">
@@ -152,6 +184,38 @@
     <div class="text-center text-xs text-amber-100 mt-8">© 2024 Swapan Kiran Trust. All rights reserved.</div>
   </footer>
 
+  <script>
+    // Smooth page loading
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add page-loaded class after a brief delay to prevent flash
+      setTimeout(() => {
+        const loadingElements = document.querySelectorAll('.page-loading');
+        loadingElements.forEach(el => {
+          el.classList.remove('page-loading');
+          el.classList.add('page-loaded');
+        });
+      }, 50);
+    });
+
+    // Smooth navigation for internal links
+    document.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A' && e.target.href && e.target.href.includes(window.location.origin)) {
+        e.preventDefault();
+        const targetUrl = e.target.href;
+        
+        // Add fade out effect to main content only
+        const mainContent = document.querySelectorAll('main, section');
+        mainContent.forEach(el => {
+          el.style.opacity = '0';
+          el.style.transition = 'opacity 0.3s ease-out';
+        });
+        
+        setTimeout(() => {
+          window.location.href = targetUrl;
+        }, 300);
+      }
+    });
+  </script>
 </body>
 
 </html>

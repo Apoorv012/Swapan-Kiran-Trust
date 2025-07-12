@@ -42,6 +42,38 @@
       transform: scale(0.95);
       opacity: 0;
     }
+
+    /* Page transition effects */
+    .page-content {
+      opacity: 0;
+      animation: fadeIn 0.3s ease-in-out forwards;
+    }
+
+    .no-animation {
+      animation: none !important;
+      opacity: 1 !important;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Prevent flash of unstyled content */
+    .page-loading {
+      opacity: 0;
+    }
+
+    .page-loaded {
+      opacity: 1;
+      transition: opacity 0.3s ease-in-out;
+    }
   </style>
 
   <!-- Open Graph / Facebook / Twitter Meta Tags -->
@@ -62,7 +94,7 @@
 <body class="bg-amber-50 text-gray-800 text-base leading-relaxed">
 
   <!-- Navbar -->
-  <nav class="bg-gradient-to-r from-amber-500 to-amber-400 text-white px-8 py-4 shadow-lg" x-data="{ open: false }">
+  <nav class="bg-gradient-to-r from-amber-500 to-amber-400 text-white px-8 py-4 shadow-lg no-animation" x-data="{ open: false }">
     <div class="flex justify-between items-center">
       <!-- Trust Name on the left -->
       <div class="main_title text-amber-700 text-lg md:text-xl font-extrabold tracking-tight">Swapan Kiran Trust</div>
@@ -94,7 +126,7 @@
 
 
   <!-- Donate Now Section -->
-  <section class="relative bg-yellow-100 py-20 px-6 text-center overflow-hidden" data-aos="fade-in"
+  <section class="relative bg-yellow-100 py-20 px-6 text-center overflow-hidden page-loading" data-aos="fade-in"
     data-aos-duration="1200">
     <div class="absolute inset-0 z-0">
       <div class="parallax bg-cover bg-center w-full h-full"
@@ -128,6 +160,37 @@
 
   <!-- Razorpay integration -->
   <script>
+    // Smooth page loading
+    document.addEventListener('DOMContentLoaded', function () {
+      // Add page-loaded class after a brief delay to prevent flash
+      setTimeout(() => {
+        const loadingElements = document.querySelectorAll('.page-loading');
+        loadingElements.forEach(el => {
+          el.classList.remove('page-loading');
+          el.classList.add('page-loaded');
+        });
+      }, 50);
+    });
+
+    // Smooth navigation for internal links
+    document.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A' && e.target.href && e.target.href.includes(window.location.origin)) {
+        e.preventDefault();
+        const targetUrl = e.target.href;
+        
+        // Add fade out effect to main content only
+        const mainContent = document.querySelectorAll('section');
+        mainContent.forEach(el => {
+          el.style.opacity = '0';
+          el.style.transition = 'opacity 0.3s ease-out';
+        });
+        
+        setTimeout(() => {
+          window.location.href = targetUrl;
+        }, 300);
+      }
+    });
+
     function playDing() {
       new Audio("https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg").play();
     }
@@ -205,7 +268,7 @@
   </script>
 
   <!-- About Us -->
-  <section id="about" class="py-16 px-6 max-w-4xl mx-auto text-center">
+  <section id="about" class="py-16 px-6 max-w-4xl mx-auto text-center bg-white rounded-lg shadow-lg page-loading">
     <h2 class="headline text-3xl sm:text-4xl font-bold mb-4">Our Mission</h2>
     <p class="text-lg text-gray-700">We are a grassroots NGO sharing stories of impact on Instagram and YouTube. We
       provide food, clothes, and stationery to kids in slums—and now we are building a school for them. Every
@@ -213,7 +276,7 @@
   </section>
 
   <!-- Blog Section -->
-  <section id="blog" class="bg-amber-50 py-8 px-6">
+  <section id="blog" class="bg-amber-50 py-8 px-6 page-loading">
     <div class="text-center mb-12" data-aos="zoom-in">
       <h2 class="headline text-4xl sm:text-5xl font-bold text-amber-700 mb-4">Recent Impact</h2>
       <p class="max-w-2xl mx-auto text-lg sm:text-xl text-gray-700">Stories of generosity and progress — every reel
@@ -276,7 +339,7 @@
   </script>
 
   <!-- Moments of Joy Section -->
-  <section class="bg-gradient-to-br from-yellow-50 via-amber-50 to-amber-100 py-20 px-6" data-aos="fade-up">
+  <section class="bg-gradient-to-br from-yellow-50 via-amber-50 to-amber-100 py-20 px-6 page-loading" data-aos="fade-up">
     <div class="text-center mb-12">
       <h2 class="headline text-4xl sm:text-5xl font-bold text-amber-700 mb-4">Moments of Joy</h2>
       <p class="max-w-2xl mx-auto text-lg sm:text-xl text-gray-700">
@@ -434,7 +497,7 @@
         <a href="https://www.instagram.com/villagetuition4321?igsh=MXUwY3NjZzNkYWo1ag==" target="_blank" class="flex items-center hover:underline">
           <svg class="w-5 h-5 mr-2 fill-current" viewBox="0 0 24 24">
             <path
-              d="M12 2.2c3.2 0 3.584.012 4.85.07 1.17.056 1.97.24 2.43.41.59.22 1.01.48 1.45.92.44.44.7.86.92 1.45.17.46.354 1.26.41 2.43.058 1.266.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.97-.41 2.43-.22.59-.48 1.01-.92 1.45-.44.44-.86.7-1.45.92-.46.17-1.26.354-2.43.41-1.266.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.24-2.43-.41-.59-.22-1.01-.48-1.45-.92-.44-.44-.7-.86-.92-1.45-.17-.46-.354-1.26-.41-2.43C2.212 15.784 2.2 15.4 2.2 12s.012-3.584.07-4.85c.056-1.17.24-1.97.41-2.43.22-.59.48-1.01.92-1.45.44-.44.86-.7 1.45-.92.46-.17 1.26-.354 2.43-.41C8.416 2.212 8.8 2.2 12 2.2zm0-2.2C8.736 0 8.332.013 7.052.072 5.77.13 4.802.31 4.01.6c-.8.29-1.48.68-2.16 1.36C1.13 2.64.74 3.32.45 4.12c-.29.79-.47 1.76-.53 3.04C-.013 8.332 0 8.736 0 12c0 3.264.013 3.668.072 4.948.058 1.282.24 2.25.53 3.04.29.8.68 1.48 1.36 2.16.68.68 1.36 1.07 2.16 1.36.79.29 1.76.47 3.04.53C8.332 23.987 8.736 24 12 24s3.668-.013 4.948-.072c1.282-.058 2.25-.24 3.04-.53.8-.29 1.48-.68 2.16-1.36.68-.68 1.07-1.36 1.36-2.16.29-.79.47-1.76.53-3.04.059-1.28.072-1.684.072-4.948 0-3.264-.013-3.668-.072-4.948-.058-1.282-.24-2.25-.53-3.04-.29-.8-.68-1.48-1.36-2.16-.68-.68-1.36-1.07-2.16-1.36-.79-.29-1.76-.47-3.04-.53C15.668.013 15.264 0 12 0z" />
+              d="M12 2.2c3.2 0 3.584.012 4.85.07 1.17.056 1.97.24 2.43.41.59.22 1.01.48 1.45.92.44.44.7.86.92 1.45.17.46.354 1.26.41 2.43.058 1.266.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.97-.41 2.43-.22.59-.48 1.01-.92 1.45-.44.44-.7-.86-.92-1.45-.17-.46-.354-1.26-.41-2.43C2.212 15.784 2.2 15.4 2.2 12s.012-3.584.07-4.85c.056-1.17.24-1.97.41-2.43.22-.59.48-1.01.92-1.45.44-.44.86-.7 1.45-.92.46-.17 1.26-.354 2.43-.41C8.416 2.212 8.8 2.2 12 2.2zm0-2.2C8.736 0 8.332.013 7.052.072 5.77.13 4.802.31 4.01.6c-.8.29-1.48.68-2.16 1.36C1.13 2.64.74 3.32.45 4.12c-.29.79-.47 1.76-.53 3.04C-.013 8.332 0 8.736 0 12c0 3.264.013 3.668.072 4.948.058 1.282.24 2.25.53 3.04.29.8.68 1.48 1.36 2.16.68.68 1.36 1.07 2.16 1.36.79.29 1.76.47 3.04.53C8.332 23.987 8.736 24 12 24s3.668-.013 4.948-.072c1.282-.058 2.25-.24 3.04-.53.8-.29 1.48-.68 2.16-1.36.68-.68 1.07-1.36 1.36-2.16.29-.79.47-1.76.53-3.04.059-1.28.072-1.684.072-4.948 0-3.264-.013-3.668-.072-4.948-.058-1.282-.24-2.25-.53-3.04-.29-.8-.68-1.48-1.36-2.16-.68-.68-1.36-1.07-2.16-1.36-.79-.29-1.76-.47-3.04-.53C15.668.013 15.264 0 12 0z" />
             <path
               d="M12 5.838A6.162 6.162 0 1 0 12 18.162 6.162 6.162 0 1 0 12 5.838zm0 10.162A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z" />
           </svg>

@@ -5,13 +5,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hope For Education | NGO</title>
-  <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/flowbite@2.3.0/dist/flowbite.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js" defer></script>
   <style>
     body {
       font-family: 'Inter', sans-serif;
@@ -34,10 +37,7 @@
       animation: fadeIn 0.3s ease-in-out forwards;
     }
 
-    .no-animation {
-      animation: none !important;
-      opacity: 1 !important;
-    }
+
 
     @keyframes fadeIn {
       from {
@@ -79,7 +79,7 @@
 <body class="bg-amber-50 min-h-screen flex flex-col text-gray-800 text-base leading-relaxed">
 
   <!-- Navbar -->
-  <nav class="bg-gradient-to-r from-amber-500 to-amber-400 text-white px-8 py-4 shadow-lg no-animation"
+  <nav style="position: sticky; top: 0; z-index: 50;" class="bg-gradient-to-r from-amber-500 to-amber-400 text-white px-8 py-4 shadow-lg no-animation"
     x-data="{ open: false }">
     <div class="flex justify-between items-center">
       <!-- Trust Name on the left -->
@@ -139,90 +139,77 @@
   </section>
 
   <!-- New Section: Aditya's Journey Slideshow -->
-  <section class="bg-amber-50 py-12 px-4">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="headline text-3xl font-bold text-center mb-12 text-amber-700">Aditya's Journey: The Story Behind Swapan
-        Kiran Trust</h2>
+<section class="bg-amber-50 py-12 px-4">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-12 text-amber-700">
+      Aditya's Journey: The Story Behind Swapan Kiran Trust
+    </h2>
 
-      <!-- Slideshow Container -->
-      <div class="relative">
-        <!-- Slides -->
-        <div class="slides-container relative">
-          <div class="slide active" data-slide="0">
-            <div class="flex flex-col md:flex-row items-center bg-white rounded-xl shadow-lg p-6 gap-6">
-              <img src="https://placehold.co/600x400/FBBF24/78350F?text=Aditya+Early+Life"
-                alt="Aditya as a young man in his village"
-                class="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-md">
-              <div class="md:w-1/2 text-center md:text-left">
-                <h3 class="text-2xl font-semibold text-amber-600 mb-3">The Genesis of a Dream</h3>
-                <p class="text-gray-700 leading-relaxed">Aditya grew up witnessing the struggles of his community
-                  firsthand. The lack of access to basic education and resources deeply impacted him, igniting a passion
-                  to make a tangible difference. This early exposure shaped his resolve to uplift those around him,
-                  laying the foundation for what would become Swapan Kiran Trust.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="slide" data-slide="1">
-            <div class="flex flex-col md:flex-row items-center bg-white rounded-xl shadow-lg p-6 gap-6">
-              <img src="https://placehold.co/600x400/FBBF24/78350F?text=Aditya+Working"
-                alt="Aditya interacting with children in a school setting"
-                class="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-md">
-              <div class="md:w-1/2 text-center md:text-left">
-                <h3 class="text-2xl font-semibold text-amber-600 mb-3">Building Bridges of Hope</h3>
-                <p class="text-gray-700 leading-relaxed">Starting with humble beginnings, Aditya began by personally
-                  distributing food and teaching children under a tree. His dedication attracted like-minded
-                  individuals, and soon, his small effort blossomed into a community-wide initiative. This phase was
-                  marked by tireless work, building trust, and creating foundational programs.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="slide" data-slide="2">
-            <div class="flex flex-col md:flex-row items-center bg-white rounded-xl shadow-lg p-6 gap-6">
-              <img src="https://placehold.co/600x400/FBBF24/78350F?text=Aditya+Community"
-                alt="Aditya with a group of beneficiaries"
-                class="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-md">
-              <div class="md:w-1/2 text-center md:text-left">
-                <h3 class="text-2xl font-semibold text-amber-600 mb-3">A Vision Realized, A Future Brightened</h3>
-                <p class="text-gray-700 leading-relaxed">Today, Swapan Kiran Trust stands as a beacon of hope, a direct
-                  result of Aditya's unwavering commitment. From providing education to ensuring food security, the
-                  trust continues to expand its reach, transforming countless lives and fostering a brighter future for
-                  the underprivileged. This is his legacy, built on compassion and action.</p>
-              </div>
+    <!-- Swiper -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <!-- Slide 1 -->
+        <div class="swiper-slide">
+          <div class="flex flex-col md:flex-row items-center bg-white rounded-xl shadow-lg p-6 gap-6">
+            <img src="https://placehold.co/600x400/FBBF24/78350F?text=Aditya+Early+Life"
+              alt="Aditya as a young man in his village"
+              class="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-md" />
+            <div class="md:w-1/2 text-center md:text-left">
+              <h3 class="text-2xl font-semibold text-amber-600 mb-3">The Genesis of a Dream</h3>
+              <p class="text-gray-700 text-justify leading-relaxed">Aditya grew up witnessing the struggles of his community
+              firsthand. The lack of access to basic education and resources deeply impacted him, igniting a passion
+              to make a tangible difference. This early exposure shaped his resolve to uplift those around him,
+              laying the foundation for what would become Swapan Kiran Trust.</p>
             </div>
           </div>
         </div>
 
-        <!-- Navigation Buttons -->
-        <button id="prevBtn"
-          class="absolute left-0 top-1/2 -translate-y-1/2 bg-amber-600 text-white p-3 rounded-full shadow-lg hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-400 z-10 ml-4 transition-all duration-300">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-          </svg>
-        </button>
-        <button id="nextBtn"
-          class="absolute right-0 top-1/2 -translate-y-1/2 bg-amber-600 text-white p-3 rounded-full shadow-lg hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-400 z-10 mr-4 transition-all duration-300">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </button>
+        <!-- Slide 2 -->
+        <div class="swiper-slide">
+          <div class="flex flex-col md:flex-row items-center bg-white rounded-xl shadow-lg p-6 gap-6">
+            <img src="https://placehold.co/600x400/FBBF24/78350F?text=Aditya+Working"
+              alt="Aditya interacting with children in a school setting"
+              class="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-md" />
+            <div class="md:w-1/2 text-center md:text-left">
+              <h3 class="text-2xl font-semibold text-amber-600 mb-3">Building Bridges of Hope</h3>
+              <p class="text-gray-700 text-justify leading-relaxed">Starting with humble beginnings, Aditya began by personally
+              distributing food and teaching children under a tree. His dedication attracted like-minded
+              individuals, and soon, his small effort blossomed into a community-wide initiative. This phase was
+              marked by tireless work, building trust, and creating foundational programs.</p>
+            </div>
+          </div>
+        </div>
 
-        <!-- Pagination Dots -->
-        <div class="flex justify-center mt-8 space-x-2">
-          <button
-            class="dot active w-3 h-3 rounded-full bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-colors duration-300"
-            data-slide="0"></button>
-          <button
-            class="dot w-3 h-3 rounded-full bg-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-colors duration-300"
-            data-slide="1"></button>
-          <button
-            class="dot w-3 h-3 rounded-full bg-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-colors duration-300"
-            data-slide="2"></button>
+        <!-- Slide 3 -->
+        <div class="swiper-slide">
+          <div class="flex flex-col md:flex-row items-center bg-white rounded-xl shadow-lg p-6 gap-6">
+            <img src="https://placehold.co/600x400/FBBF24/78350F?text=Aditya+Community"
+              alt="Aditya with a group of beneficiaries"
+              class="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-md" />
+            <div class="md:w-1/2 text-center md:text-left">
+              <h3 class="text-2xl font-semibold text-amber-600 mb-3">A Vision Realized, A Future Brightened</h3>
+              <p class="text-gray-700 text-justify leading-relaxed">Today, Swapan Kiran Trust stands as a beacon of hope, a direct
+              result of Aditya's unwavering commitment. From providing education to ensuring food security, the
+              trust continues to expand its reach, transforming countless lives and fostering a brighter future for
+              the underprivileged. This is his legacy, built on compassion and action.</p>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Swiper Arrows -->
+      <div class="absolute top-1/2 left-0 right-0 flex justify-between px-4">
+          <div class="swiper-button-next text-amber-700"></div>
+          <div class="swiper-button-prev text-amber-700"></div>
+      </div>
+
+      <!-- Swiper Pagination -->
+      <div class="swiper-pagination !bottom-0 mt-4"></div>
     </div>
-  </section>
+  </div>
+</section>
+
+  
 
     <!-- Footer -->
     <footer class="bg-amber-600 text-white py-8 border-t border-amber-700 mt-auto">
@@ -273,7 +260,7 @@
     </footer>
 
   <style>
-    .slide {
+    /* .slide {
       opacity: 0;
       transform: translateX(20px);
       transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
@@ -293,7 +280,31 @@
 
     .slides-container {
       min-height: 400px;
-    }
+    } */
+
+    .swiper-button-next,
+  .swiper-button-prev {
+    border-radius: 9999px;
+    width: 40px;
+    height: 40px;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  }
+
+  .swiper-pagination-bullet {
+    background-color: #fcd34d; /* amber-400 */
+    opacity: 0.7;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: #92400e; /* amber-700 */
+    opacity: 1;
+  }
+
+  .swiper-pagination {
+    margin-top: 1rem;
+    position: relative;
+    bottom: auto !important;
+  }
   </style>
 
   <script>
@@ -328,55 +339,75 @@
       }
     });
 
-    // Custom slideshow functionality
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-    const totalSlides = slides.length;
-    let isTransitioning = false;
-
-    function showSlide(index) {
-      if (isTransitioning) return;
-      isTransitioning = true;
-
-      // Hide current slide
-      slides[currentSlide].classList.remove('active');
-      dots[currentSlide].classList.remove('bg-amber-600');
-      dots[currentSlide].classList.add('bg-amber-300');
-
-      // Update current slide index
-      currentSlide = index;
-
-      // Show new slide after a brief delay
-      setTimeout(() => {
-        slides[currentSlide].classList.add('active');
-        dots[currentSlide].classList.remove('bg-amber-300');
-        dots[currentSlide].classList.add('bg-amber-600');
-        isTransitioning = false;
-      }, 250);
-    }
-
-    function nextSlide() {
-      const nextIndex = (currentSlide + 1) % totalSlides;
-      showSlide(nextIndex);
-    }
-
-    function prevSlide() {
-      const prevIndex = (currentSlide - 1 + totalSlides) % totalSlides;
-      showSlide(prevIndex);
-    }
-
-    // Event listeners
-    document.getElementById('nextBtn').addEventListener('click', nextSlide);
-    document.getElementById('prevBtn').addEventListener('click', prevSlide);
-
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        if (index !== currentSlide) {
-          showSlide(index);
-        }
+    document.addEventListener("DOMContentLoaded", function () {
+        new Swiper(".mySwiper", {
+          loop: true,
+          speed: 800,
+          slidesPerView: 1,
+          spaceBetween: 20,
+          autoplay: {
+            delay: 2000,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
       });
-    });
+    // // Custom slideshow functionality
+    // let currentSlide = 0;
+    // const slides = document.querySelectorAll('.slide');
+    // const dots = document.querySelectorAll('.dot');
+    // const totalSlides = slides.length;
+    // let isTransitioning = false;
+
+    // function showSlide(index) {
+    //   if (isTransitioning) return;
+    //   isTransitioning = true;
+
+    //   // Hide current slide
+    //   slides[currentSlide].classList.remove('active');
+    //   dots[currentSlide].classList.remove('bg-amber-600');
+    //   dots[currentSlide].classList.add('bg-amber-300');
+
+    //   // Update current slide index
+    //   currentSlide = index;
+
+    //   // Show new slide after a brief delay
+    //   setTimeout(() => {
+    //     slides[currentSlide].classList.add('active');
+    //     dots[currentSlide].classList.remove('bg-amber-300');
+    //     dots[currentSlide].classList.add('bg-amber-600');
+    //     isTransitioning = false;
+    //   }, 250);
+    // }
+
+    // function nextSlide() {
+    //   const nextIndex = (currentSlide + 1) % totalSlides;
+    //   showSlide(nextIndex);
+    // }
+
+    // function prevSlide() {
+    //   const prevIndex = (currentSlide - 1 + totalSlides) % totalSlides;
+    //   showSlide(prevIndex);
+    // }
+
+    // // Event listeners
+    // document.getElementById('nextBtn').addEventListener('click', nextSlide);
+    // document.getElementById('prevBtn').addEventListener('click', prevSlide);
+
+    // dots.forEach((dot, index) => {
+    //   dot.addEventListener('click', () => {
+    //     if (index !== currentSlide) {
+    //       showSlide(index);
+    //     }
+    //   });
+    // });
   </script>
 </body>
 

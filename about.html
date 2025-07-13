@@ -79,7 +79,8 @@
 <body class="bg-amber-50 min-h-screen flex flex-col text-gray-800 text-base leading-relaxed">
 
   <!-- Navbar -->
-  <nav class="bg-gradient-to-r from-amber-500 to-amber-400 text-white px-8 py-4 shadow-lg no-animation" x-data="{ open: false }">
+  <nav class="bg-gradient-to-r from-amber-500 to-amber-400 text-white px-8 py-4 shadow-lg no-animation"
+    x-data="{ open: false }">
     <div class="flex justify-between items-center">
       <!-- Trust Name on the left -->
       <div class="main_title text-amber-700 text-lg md:text-xl font-extrabold tracking-tight">Swapan Kiran Trust</div>
@@ -87,7 +88,8 @@
       <div class="hidden sm:flex space-x-8 text-lg font-semibold ml-auto">
         <a href="/" class="hover:underline hover:text-amber-100 transition-colors duration-200">Home</a>
         <a href="/about.html" class="hover:underline hover:text-amber-100 transition-colors duration-200">About Us</a>
-        <a href="/contact.html" class="hover:underline hover:text-amber-100 transition-colors duration-200">Contact Us</a>
+        <a href="/contact.html" class="hover:underline hover:text-amber-100 transition-colors duration-200">Contact
+          Us</a>
       </div>
       <!-- Hamburger -->
       <button @click="open = !open" class="sm:hidden focus:outline-none ml-4">
@@ -96,7 +98,7 @@
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
         <svg x-show="open" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
-             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
@@ -104,79 +106,119 @@
     <!-- Mobile Menu -->
     <div x-show="open" x-transition class="sm:hidden mt-4 space-y-2 text-lg font-semibold">
       <a href="/" class="block px-2 py-1 hover:bg-amber-600 rounded transition-colors duration-200">Home</a>
-      <a href="/about.html" class="block px-2 py-1 hover:bg-amber-600 rounded transition-colors duration-200">About Us</a>
-      <a href="/contact.html" class="block px-2 py-1 hover:bg-amber-600 rounded transition-colors duration-200">Contact Us</a>
+      <a href="/about.html" class="block px-2 py-1 hover:bg-amber-600 rounded transition-colors duration-200">About
+        Us</a>
+      <a href="/contact.html" class="block px-2 py-1 hover:bg-amber-600 rounded transition-colors duration-200">Contact
+        Us</a>
     </div>
   </nav>
 
   <section class="my-4 p-6 px-6 max-w-4xl mx-auto text-center page-loading">
     <h2 class="headline text-3xl sm:text-4xl font-bold mb-4 text-amber-700">What We Do?</h2>
-    <p class="text-lg text-gray-700 mb-4">We are a grassroots NGO dedicated to supporting people in need—especially children, families, and the elderly who lack access to food, education, and care. Our mission is to help where help is needed most, with practical support and compassion.</p>
-    <p class="text-lg text-gray-700 mb-4">Started as a local effort by our founder Aditya Gupta, our work has grown into a community initiative reaching rural and low-income areas. We distribute food kits, help children go to school, and offer care to the neglected—always focusing on real needs on the ground.</p>
-    <p class="text-lg text-gray-700">We believe small actions can create big changes. Every effort is driven by honesty, empathy, and a commitment to making a difference—one life at a time.</p>
+    <p class="text-lg text-gray-700 mb-4">We are a grassroots NGO dedicated to supporting people in need—especially
+      children, families, and the elderly who lack access to food, education, and care. Our mission is to help where
+      help is needed most, with practical support and compassion.</p>
+    <p class="text-lg text-gray-700 mb-4">Started as a local effort by our founder Aditya Gupta, our work has grown into
+      a community initiative reaching rural and low-income areas. We distribute food kits, help children go to school,
+      and offer care to the neglected—always focusing on real needs on the ground.</p>
+    <p class="text-lg text-gray-700">We believe small actions can create big changes. Every effort is driven by honesty,
+      empathy, and a commitment to making a difference—one life at a time.</p>
   </section>
-  
-  <section class="max-w-xl mx-auto mt-2 mb-8 px-8 py-6 bg-white rounded-xl shadow-xl flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 page-loading">
-    <img src="./thebetterindia_pfp.jpg" alt="The Better India Hindi Instagram" class="w-24 h-24 rounded-full border-2 border-amber-400 shadow-xl">
+
+  <section
+    class="max-w-xl mx-auto mt-2 mb-8 px-8 py-6 bg-white rounded-xl shadow-xl flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 page-loading">
+    <img src="./thebetterindia_pfp.jpg" alt="The Better India Hindi Instagram"
+      class="w-24 h-24 rounded-full border-2 border-amber-400 shadow-xl">
     <div class="text-center sm:text-left">
       <h3 class="text-lg font-semibold text-amber-700 mb-1">Collaboration Highlight</h3>
-      <p class="text-gray-700">We are proud to have collaborated with <a href="https://www.instagram.com/thebetterindia.hindi/" target="_blank" class="text-amber-600 hover:underline font-medium">@thebetterindia.hindi</a>, a great brand making a real difference. Their support and reach help us amplify our impact and share our stories with a wider audience.</p>
+      <p class="text-gray-700">We are proud to have collaborated with <a
+          href="https://www.instagram.com/thebetterindia.hindi/" target="_blank"
+          class="text-amber-600 hover:underline font-medium">@thebetterindia.hindi</a>, a great brand making a real
+        difference. Their support and reach help us amplify our impact and share our stories with a wider audience.</p>
     </div>
   </section>
 
   <!-- New Section: Aditya's Journey Slideshow -->
   <section class="bg-amber-50 py-12 px-4">
     <div class="max-w-6xl mx-auto">
-      <h2 class="headline text-4xl font-bold text-center mb-12 text-amber-700">Aditya's Journey: The Story Behind Swapan Kiran Trust</h2>
-      
+      <h2 class="headline text-3xl font-bold text-center mb-12 text-amber-700">Aditya's Journey: The Story Behind Swapan
+        Kiran Trust</h2>
+
       <!-- Slideshow Container -->
       <div class="relative">
         <!-- Slides -->
         <div class="slides-container relative">
           <div class="slide active" data-slide="0">
             <div class="flex flex-col md:flex-row items-center bg-white rounded-xl shadow-lg p-6 gap-6">
-              <img src="https://placehold.co/600x400/FBBF24/78350F?text=Aditya+Early+Life" alt="Aditya as a young man in his village" class="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-md">
+              <img src="https://placehold.co/600x400/FBBF24/78350F?text=Aditya+Early+Life"
+                alt="Aditya as a young man in his village"
+                class="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-md">
               <div class="md:w-1/2 text-center md:text-left">
                 <h3 class="text-2xl font-semibold text-amber-600 mb-3">The Genesis of a Dream</h3>
-                <p class="text-gray-700 leading-relaxed">Aditya grew up witnessing the struggles of his community firsthand. The lack of access to basic education and resources deeply impacted him, igniting a passion to make a tangible difference. This early exposure shaped his resolve to uplift those around him, laying the foundation for what would become Swapan Kiran Trust.</p>
+                <p class="text-gray-700 leading-relaxed">Aditya grew up witnessing the struggles of his community
+                  firsthand. The lack of access to basic education and resources deeply impacted him, igniting a passion
+                  to make a tangible difference. This early exposure shaped his resolve to uplift those around him,
+                  laying the foundation for what would become Swapan Kiran Trust.</p>
               </div>
             </div>
           </div>
-          
+
           <div class="slide" data-slide="1">
             <div class="flex flex-col md:flex-row items-center bg-white rounded-xl shadow-lg p-6 gap-6">
-              <img src="https://placehold.co/600x400/FBBF24/78350F?text=Aditya+Working" alt="Aditya interacting with children in a school setting" class="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-md">
+              <img src="https://placehold.co/600x400/FBBF24/78350F?text=Aditya+Working"
+                alt="Aditya interacting with children in a school setting"
+                class="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-md">
               <div class="md:w-1/2 text-center md:text-left">
                 <h3 class="text-2xl font-semibold text-amber-600 mb-3">Building Bridges of Hope</h3>
-                <p class="text-gray-700 leading-relaxed">Starting with humble beginnings, Aditya began by personally distributing food and teaching children under a tree. His dedication attracted like-minded individuals, and soon, his small effort blossomed into a community-wide initiative. This phase was marked by tireless work, building trust, and creating foundational programs.</p>
+                <p class="text-gray-700 leading-relaxed">Starting with humble beginnings, Aditya began by personally
+                  distributing food and teaching children under a tree. His dedication attracted like-minded
+                  individuals, and soon, his small effort blossomed into a community-wide initiative. This phase was
+                  marked by tireless work, building trust, and creating foundational programs.</p>
               </div>
             </div>
           </div>
-          
+
           <div class="slide" data-slide="2">
             <div class="flex flex-col md:flex-row items-center bg-white rounded-xl shadow-lg p-6 gap-6">
-              <img src="https://placehold.co/600x400/FBBF24/78350F?text=Aditya+Community" alt="Aditya with a group of beneficiaries" class="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-md">
+              <img src="https://placehold.co/600x400/FBBF24/78350F?text=Aditya+Community"
+                alt="Aditya with a group of beneficiaries"
+                class="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-md">
               <div class="md:w-1/2 text-center md:text-left">
                 <h3 class="text-2xl font-semibold text-amber-600 mb-3">A Vision Realized, A Future Brightened</h3>
-                <p class="text-gray-700 leading-relaxed">Today, Swapan Kiran Trust stands as a beacon of hope, a direct result of Aditya's unwavering commitment. From providing education to ensuring food security, the trust continues to expand its reach, transforming countless lives and fostering a brighter future for the underprivileged. This is his legacy, built on compassion and action.</p>
+                <p class="text-gray-700 leading-relaxed">Today, Swapan Kiran Trust stands as a beacon of hope, a direct
+                  result of Aditya's unwavering commitment. From providing education to ensuring food security, the
+                  trust continues to expand its reach, transforming countless lives and fostering a brighter future for
+                  the underprivileged. This is his legacy, built on compassion and action.</p>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Navigation Buttons -->
-        <button id="prevBtn" class="absolute left-0 top-1/2 -translate-y-1/2 bg-amber-600 text-white p-3 rounded-full shadow-lg hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-400 z-10 ml-4 transition-all duration-300">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        <button id="prevBtn"
+          class="absolute left-0 top-1/2 -translate-y-1/2 bg-amber-600 text-white p-3 rounded-full shadow-lg hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-400 z-10 ml-4 transition-all duration-300">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
         </button>
-        <button id="nextBtn" class="absolute right-0 top-1/2 -translate-y-1/2 bg-amber-600 text-white p-3 rounded-full shadow-lg hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-400 z-10 mr-4 transition-all duration-300">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        <button id="nextBtn"
+          class="absolute right-0 top-1/2 -translate-y-1/2 bg-amber-600 text-white p-3 rounded-full shadow-lg hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-400 z-10 mr-4 transition-all duration-300">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
         </button>
 
         <!-- Pagination Dots -->
         <div class="flex justify-center mt-8 space-x-2">
-          <button class="dot active w-3 h-3 rounded-full bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-colors duration-300" data-slide="0"></button>
-          <button class="dot w-3 h-3 rounded-full bg-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-colors duration-300" data-slide="1"></button>
-          <button class="dot w-3 h-3 rounded-full bg-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-colors duration-300" data-slide="2"></button>
+          <button
+            class="dot active w-3 h-3 rounded-full bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-colors duration-300"
+            data-slide="0"></button>
+          <button
+            class="dot w-3 h-3 rounded-full bg-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-colors duration-300"
+            data-slide="1"></button>
+          <button
+            class="dot w-3 h-3 rounded-full bg-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-colors duration-300"
+            data-slide="2"></button>
         </div>
       </div>
     </div>
@@ -193,14 +235,14 @@
       width: 100%;
       pointer-events: none;
     }
-    
+
     .slide.active {
       opacity: 1;
       transform: translateX(0);
       position: relative;
       pointer-events: auto;
     }
-    
+
     .slides-container {
       min-height: 400px;
     }
@@ -208,7 +250,7 @@
 
   <script>
     // Smooth page loading
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       // Add page-loaded class after a brief delay to prevent flash
       setTimeout(() => {
         const loadingElements = document.querySelectorAll('.page-loading');
@@ -220,18 +262,18 @@
     });
 
     // Smooth navigation for internal links
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
       if (e.target.tagName === 'A' && e.target.href && e.target.href.includes(window.location.origin)) {
         e.preventDefault();
         const targetUrl = e.target.href;
-        
+
         // Add fade out effect to main content only
         const mainContent = document.querySelectorAll('section');
         mainContent.forEach(el => {
           el.style.opacity = '0';
           el.style.transition = 'opacity 0.3s ease-out';
         });
-        
+
         setTimeout(() => {
           window.location.href = targetUrl;
         }, 300);
@@ -248,15 +290,15 @@
     function showSlide(index) {
       if (isTransitioning) return;
       isTransitioning = true;
-      
+
       // Hide current slide
       slides[currentSlide].classList.remove('active');
       dots[currentSlide].classList.remove('bg-amber-600');
       dots[currentSlide].classList.add('bg-amber-300');
-      
+
       // Update current slide index
       currentSlide = index;
-      
+
       // Show new slide after a brief delay
       setTimeout(() => {
         slides[currentSlide].classList.add('active');
@@ -279,7 +321,7 @@
     // Event listeners
     document.getElementById('nextBtn').addEventListener('click', nextSlide);
     document.getElementById('prevBtn').addEventListener('click', prevSlide);
-    
+
     dots.forEach((dot, index) => {
       dot.addEventListener('click', () => {
         if (index !== currentSlide) {

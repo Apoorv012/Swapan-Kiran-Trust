@@ -59,6 +59,85 @@
       opacity: 1;
       transition: opacity 0.3s ease-in-out;
     }
+
+    /* Slideshow styles */
+    .slide {
+      opacity: 0;
+      transform: translateX(20px);
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      pointer-events: none;
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: translateX(0);
+      position: relative;
+      pointer-events: auto;
+    }
+
+    .slides-container {
+      min-height: 400px;
+    }
+
+    /* Navigation button improvements */
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(217, 119, 6, 0.9);
+      backdrop-filter: blur(4px);
+      border-radius: 50%;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+      z-index: 20;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav-btn:hover {
+      background: rgba(180, 83, 9, 0.95);
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .nav-btn:focus {
+      outline: none;
+      ring: 2px solid rgba(251, 191, 36, 0.5);
+    }
+
+    .nav-btn-prev {
+      left: 16px;
+    }
+
+    .nav-btn-next {
+      right: 16px;
+    }
+
+    /* Responsive navigation buttons */
+    @media (max-width: 768px) {
+      .nav-btn {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .nav-btn-prev {
+        left: 8px;
+      }
+      
+      .nav-btn-next {
+        right: 8px;
+      }
+    }
   </style>
 
   <!-- Open Graph / Facebook / Twitter Meta Tags -->
@@ -69,7 +148,7 @@
   <meta property="og:url" content="https://swapankirantrust.in/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Hope For Education | NGO">
-  <meta name="twitter:description" content="Support a child’s education journey with your donation.">
+  <meta name="twitter:description" content="Support a child's education journey with your donation.">
   <meta name="twitter:image" content="https://swapankirantrust.in/coverpage.jpg">
 
   <!-- Analytics (Plausible Example) -->
@@ -143,13 +222,14 @@
     <div class="max-w-6xl mx-auto">
       <h2 class="headline text-3xl font-bold text-center mb-12 text-amber-700">Aditya's Journey: The Story Behind Swapan
         Kiran Trust</h2>
-
+      
       <!-- Slideshow Container -->
-      <div class="relative">
+      <div class="relative h-[304px] overflow-hidden rounded-xl">
         <!-- Slides -->
-        <div class="slides-container relative">
+        <div class="slides-container relative h-full">
+          <!-- Slide 1 -->
           <div class="slide active" data-slide="0">
-            <div class="flex flex-col md:flex-row items-center bg-white rounded-xl shadow-lg p-6 gap-6">
+            <div class="flex flex-col md:flex-row items-center bg-white rounded-xl shadow-lg p-6 gap-6 h-full">
               <img src="https://placehold.co/600x400/FBBF24/78350F?text=Aditya+Early+Life"
                 alt="Aditya as a young man in his village"
                 class="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-md">
@@ -163,8 +243,9 @@
             </div>
           </div>
 
+          <!-- Slide 2 -->
           <div class="slide" data-slide="1">
-            <div class="flex flex-col md:flex-row items-center bg-white rounded-xl shadow-lg p-6 gap-6">
+            <div class="flex flex-col md:flex-row items-center bg-white rounded-xl shadow-lg p-6 gap-6 h-full">
               <img src="https://placehold.co/600x400/FBBF24/78350F?text=Aditya+Working"
                 alt="Aditya interacting with children in a school setting"
                 class="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-md">
@@ -178,8 +259,9 @@
             </div>
           </div>
 
+          <!-- Slide 3 -->
           <div class="slide" data-slide="2">
-            <div class="flex flex-col md:flex-row items-center bg-white rounded-xl shadow-lg p-6 gap-6">
+            <div class="flex flex-col md:flex-row items-center bg-white rounded-xl shadow-lg p-6 gap-6 h-full">
               <img src="https://placehold.co/600x400/FBBF24/78350F?text=Aditya+Community"
                 alt="Aditya with a group of beneficiaries"
                 class="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-md">
@@ -194,107 +276,80 @@
           </div>
         </div>
 
-        <!-- Navigation Buttons -->
-        <button id="prevBtn"
-          class="absolute left-0 top-1/2 -translate-y-1/2 bg-amber-600 text-white p-3 rounded-full shadow-lg hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-400 z-10 ml-4 transition-all duration-300">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <!-- Navigation Buttons - Now properly centered -->
+        <button id="prevBtn" class="nav-btn nav-btn-prev" aria-label="Previous slide">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
           </svg>
         </button>
-        <button id="nextBtn"
-          class="absolute right-0 top-1/2 -translate-y-1/2 bg-amber-600 text-white p-3 rounded-full shadow-lg hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-400 z-10 mr-4 transition-all duration-300">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+
+        <button id="nextBtn" class="nav-btn nav-btn-next" aria-label="Next slide">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
           </svg>
         </button>
 
         <!-- Pagination Dots -->
-        <div class="flex justify-center mt-8 space-x-2">
-          <button
-            class="dot active w-3 h-3 rounded-full bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-colors duration-300"
-            data-slide="0"></button>
-          <button
-            class="dot w-3 h-3 rounded-full bg-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-colors duration-300"
-            data-slide="1"></button>
-          <button
-            class="dot w-3 h-3 rounded-full bg-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-colors duration-300"
-            data-slide="2"></button>
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+
+
+          <button class="dot active w-3 h-3 rounded-full bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-colors duration-300" data-slide="0"></button>
+          <button class="dot w-3 h-3 rounded-full bg-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-colors duration-300" data-slide="1"></button>
+          <button class="dot w-3 h-3 rounded-full bg-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-colors duration-300" data-slide="2"></button>
         </div>
       </div>
     </div>
   </section>
 
-    <!-- Footer -->
-    <footer class="bg-amber-600 text-white py-8 border-t border-amber-700 mt-auto">
-      <div
-        class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center md:items-start text-center md:text-left space-y-6 md:space-y-0">
-  
-        <!-- Foundation Name and Address -->
-        <div>
-          <h2 class="text-xl font-semibold">Swapan Kiran Trust</h2>
-          <p class="mt-2 text-sm leading-relaxed">
-            Badahar Kala, Harraiya,<br>
-            Basti, Uttar Pradesh - 272155
-          </p>
-        </div>
-  
-        <!-- Social Links with CTA and Icons -->
-        <div class="flex flex-col items-center md:items-start space-y-2">
-          <span class="font-semibold mb-1">Follow us for stories & updates!</span>
-          <a href="https://www.instagram.com/villagetuition4321?igsh=MXUwY3NjZzNkYWo1ag==" target="_blank" class="flex items-center hover:underline focus:outline-none focus:ring-2 focus:ring-white">
-            <svg class="w-5 h-5 mr-2 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-              <path
-              d="M12 2.2c3.2 0 3.584.012 4.85.07 1.17.056 1.97.24 2.43.41.59.22 1.01.48 1.45.92.44.44.7.86.92 1.45.17.46.354 1.26.41 2.43.058 1.266.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.97-.41 2.43-.22.59-.48 1.01-.92 1.45-.44.44-.86.7-1.45.92-.46.17-1.26.354-2.43.41-1.266.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.24-2.43-.41-.59-.22-1.01-.48-1.45-.92-.44-.44-.7-.86-.92-1.45-.17-.46-.354-1.26-.41-2.43C2.212 15.784 2.2 15.4 2.2 12s.012-3.584.07-4.85c.056-1.17.24-1.97.41-2.43.22-.59.48-1.01.92-1.45.44-.44.86-.7 1.45-.92.46-.17 1.26-.354 2.43-.41C8.416 2.212 8.8 2.2 12 2.2zm0-2.2C8.736 0 8.332.013 7.052.072 5.77.13 4.802.31 4.01.6c-.8.29-1.48.68-2.16 1.36C1.13 2.64.74 3.32.45 4.12c-.29.79-.47 1.76-.53 3.04C-.013 8.332 0 8.736 0 12c0 3.264.013 3.668.072 4.948.058 1.282.24 2.25.53 3.04.29.8.68 1.48 1.36 2.16.68.68 1.36 1.07 2.16 1.36.79.29 1.76.47 3.04.53C8.332 23.987 8.736 24 12 24s3.668-.013 4.948-.072c1.282-.058 2.25-.24 3.04-.53.8-.29 1.48-.68 2.16-1.36.68-.68 1.07-1.36 1.36-2.16.29-.79.47-1.76.53-3.04.059-1.28.072-1.684.072-4.948 0-3.264-.013-3.668-.072-4.948-.058-1.282-.24-2.25-.53-3.04-.29-.8-.68-1.48-1.36-2.16-.68-.68-1.36-1.07-2.16-1.36-.79-.29-1.76-.47-3.04-.53C15.668.013 15.264 0 12 0z" />
-              <path d="M12 5.838A6.162 6.162 0 1 0 12 18.162 6.162 6.162 0 1 0 12 5.838zm0 10.162A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z" />
-            </svg>
-            Instagram
-          </a>
-          <a href="https://www.youtube.com/@villagetuition432" target="_blank" class="flex items-center hover:underline focus:outline-none focus:ring-2 focus:ring-white">
-            <svg class="w-5 h-5 mr-2 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M23.498 6.186a2.994 2.994 0 0 0-2.108-2.116C19.425 3.5 12 3.5 12 3.5s-7.425 0-9.39.57A2.994 2.994 0 0 0 .502 6.186C0 8.15 0 12 0 12s0 3.85.502 5.814a2.994 2.994 0 0 0 2.108 2.116C4.575 20.5 12 20.5 12 20.5s7.425 0 9.39-.57a2.994 2.994 0 0 0 2.108-2.116C24 15.85 24 12 24 12s0-3.85-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-            </svg>
-            YouTube
-          </a>
-        </div>
-  
-        <!-- WhatsApp Button with Subtitle and Icon -->
-        <div class="flex flex-col items-center md:items-start space-y-2">
-          <span class="font-semibold mb-1">Questions? Message us on WhatsApp!</span>
-          <a href="https://wa.me/9648087903?text=Hi" target="_blank"
-            class="inline-flex items-center bg-white text-amber-600 font-semibold px-5 py-2 rounded-full shadow-md hover:bg-amber-50 hover:scale-105 transform transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-amber-400">
-            <svg class="w-5 h-5 mr-2" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
-              <path d="M16 3C9.373 3 4 8.373 4 15c0 2.637.86 5.08 2.34 7.09L4 29l7.18-2.31A12.94 12.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3zm0 22c-1.98 0-3.89-.52-5.54-1.5l-.39-.23-4.27 1.37 1.4-4.15-.25-.4A9.94 9.94 0 0 1 6 15c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm5.07-7.75c-.28-.14-1.65-.81-1.9-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.08-.16.18-.32.2-.6.07-.28-.14-1.18-.44-2.25-1.4-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.34.42-.51.14-.17.18-.29.28-.48.09-.19.05-.36-.02-.5-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47-.16-.01-.35-.01-.54-.01-.19 0-.5.07-.76.34-.26.27-1 1-.99 2.43.01 1.43 1.03 2.81 1.18 3.01.15.2 2.03 3.1 4.93 4.22.69.3 1.23.48 1.65.61.69.22 1.32.19 1.81.12.55-.08 1.65-.67 1.88-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.19-.53-.33z" />
-            </svg>
-            Chat with Us
-          </a>
-        </div>
+  <!-- Footer -->
+  <footer class="bg-amber-600 text-white py-8 border-t border-amber-700 mt-auto">
+    <div
+      class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center md:items-start text-center md:text-left space-y-6 md:space-y-0">
+
+      <!-- Foundation Name and Address -->
+      <div>
+        <h2 class="text-xl font-semibold">Swapan Kiran Trust</h2>
+        <p class="mt-2 text-sm leading-relaxed">
+          Badahar Kala, Harraiya,<br>
+          Basti, Uttar Pradesh - 272155
+        </p>
       </div>
-      <div class="text-center text-xs text-amber-100 mt-8">© 2024 Swapan Kiran Trust. All rights reserved.</div>
-    </footer>
 
-  <style>
-    .slide {
-      opacity: 0;
-      transform: translateX(20px);
-      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      pointer-events: none;
-    }
+      <!-- Social Links with CTA and Icons -->
+      <div class="flex flex-col items-center md:items-start space-y-2">
+        <span class="font-semibold mb-1">Follow us for stories & updates!</span>
+        <a href="https://www.instagram.com/villagetuition4321?igsh=MXUwY3NjZzNkYWo1ag==" target="_blank" class="flex items-center hover:underline focus:outline-none focus:ring-2 focus:ring-white">
+          <svg class="w-5 h-5 mr-2 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+            d="M12 2.2c3.2 0 3.584.012 4.85.07 1.17.056 1.97.24 2.43.41.59.22 1.01.48 1.45.92.44.44.7.86.92 1.45.17.46.354 1.26.41 2.43.058 1.266.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.97-.41 2.43-.22.59-.48 1.01-.92 1.45-.44.44-.86.7-1.45.92-.46.17-1.26.354-2.43.41-1.266.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.24-2.43-.41-.59-.22-1.01-.48-1.45-.92-.44-.44-.7-.86-.92-1.45-.17-.46-.354-1.26-.41-2.43C2.212 15.784 2.2 15.4 2.2 12s.012-3.584.07-4.85c.056-1.17.24-1.97.41-2.43.22-.59.48-1.01.92-1.45.44-.44.86-.7 1.45-.92.46-.17 1.26-.354 2.43-.41C8.416 2.212 8.8 2.2 12 2.2zm0-2.2C8.736 0 8.332.013 7.052.072 5.77.13 4.802.31 4.01.6c-.8.29-1.48.68-2.16 1.36C1.13 2.64.74 3.32.45 4.12c-.29.79-.47 1.76-.53 3.04C-.013 8.332 0 8.736 0 12c0 3.264.013 3.668.072 4.948.058 1.282.24 2.25.53 3.04.29.8.68 1.48 1.36 2.16.68.68 1.36 1.07 2.16 1.36.79.29 1.76.47 3.04.53C8.332 23.987 8.736 24 12 24s3.668-.013 4.948-.072c1.282-.058 2.25-.24 3.04-.53.8-.29 1.48-.68 2.16-1.36.68-.68 1.07-1.36 1.36-2.16.29-.79.47-1.76.53-3.04.059-1.28.072-1.684.072-4.948 0-3.264-.013-3.668-.072-4.948-.058-1.282-.24-2.25-.53-3.04-.29-.8-.68-1.48-1.36-2.16-.68-.68-1.36-1.07-2.16-1.36-.79-.29-1.76-.47-3.04-.53C15.668.013 15.264 0 12 0z" />
+            <path d="M12 5.838A6.162 6.162 0 1 0 12 18.162 6.162 6.162 0 1 0 12 5.838zm0 10.162A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z" />
+          </svg>
+          Instagram
+        </a>
+        <a href="https://www.youtube.com/@villagetuition432" target="_blank" class="flex items-center hover:underline focus:outline-none focus:ring-2 focus:ring-white">
+          <svg class="w-5 h-5 mr-2 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M23.498 6.186a2.994 2.994 0 0 0-2.108-2.116C19.425 3.5 12 3.5 12 3.5s-7.425 0-9.39.57A2.994 2.994 0 0 0 .502 6.186C0 8.15 0 12 0 12s0 3.85.502 5.814a2.994 2.994 0 0 0 2.108 2.116C4.575 20.5 12 20.5 12 20.5s7.425 0 9.39-.57a2.994 2.994 0 0 0 2.108-2.116C24 15.85 24 12 24 12s0-3.85-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+          </svg>
+          YouTube
+        </a>
+      </div>
 
-    .slide.active {
-      opacity: 1;
-      transform: translateX(0);
-      position: relative;
-      pointer-events: auto;
-    }
-
-    .slides-container {
-      min-height: 400px;
-    }
-  </style>
+      <!-- WhatsApp Button with Subtitle and Icon -->
+      <div class="flex flex-col items-center md:items-start space-y-2">
+        <span class="font-semibold mb-1">Questions? Message us on WhatsApp!</span>
+        <a href="https://wa.me/9648087903?text=Hi" target="_blank"
+          class="inline-flex items-center bg-white text-amber-600 font-semibold px-5 py-2 rounded-full shadow-md hover:bg-amber-50 hover:scale-105 transform transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-amber-400">
+          <svg class="w-5 h-5 mr-2" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+            <path d="M16 3C9.373 3 4 8.373 4 15c0 2.637.86 5.08 2.34 7.09L4 29l7.18-2.31A12.94 12.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3zm0 22c-1.98 0-3.89-.52-5.54-1.5l-.39-.23-4.27 1.37 1.4-4.15-.25-.4A9.94 9.94 0 0 1 6 15c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm5.07-7.75c-.28-.14-1.65-.81-1.9-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.08-.16.18-.32.2-.6.07-.28-.14-1.18-.44-2.25-1.4-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.34.42-.51.14-.17.18-.29.28-.48.09-.19.05-.36-.02-.5-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47-.16-.01-.35-.01-.54-.01-.19 0-.5.07-.76.34-.26.27-1 1-.99 2.43.01 1.43 1.03 2.81 1.18 3.01.15.2 2.03 3.1 4.93 4.22.69.3 1.23.48 1.65.61.69.22 1.32.19 1.81.12.55-.08 1.65-.67 1.88-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.19-.53-.33z" />
+          </svg>
+          Chat with Us
+        </a>
+      </div>
+    </div>
+    <div class="text-center text-xs text-amber-100 mt-8">© 2024 Swapan Kiran Trust. All rights reserved.</div>
+  </footer>
 
   <script>
     // Smooth page loading
@@ -377,6 +432,9 @@
         }
       });
     });
+
+    // Auto-advance slides every 5 seconds (optional)
+    setInterval(nextSlide, 5000);
   </script>
 </body>
 

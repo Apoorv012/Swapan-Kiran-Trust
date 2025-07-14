@@ -1,1 +1,2 @@
 # Swapan-Kiran-Trust
+We are a grassroots NGO sharing stories of impact on Instagram and YouTube. We provide food, clothes, and stationery to kids in slums—and now we are building a school for them. Every contribution helps us go further.

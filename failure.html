@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Donation Failed | Swapan Kiran Trust</title>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    h1, h2, h3, .headline {
+      font-family: 'Merriweather', serif;
+    }
+
+    .main_title {
+      font-family: 'Merriweather', serif;
+    }
+
+    /* Failure animation */
+    @keyframes failureShake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+
+    .failure-icon {
+      animation: failureShake 0.5s ease-in-out;
+    }
+
+    /* Page transition effects */
+    .page-content {
+      opacity: 0;
+      animation: fadeIn 0.5s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
+  <!-- Open Graph / Facebook / Twitter Meta Tags -->
+  <meta property="og:title" content="Donation Failed | Swapan Kiran Trust">
+  <meta property="og:description" content="We're sorry, but your donation could not be processed. Please try again or contact us for assistance.">
+  <meta property="og:image" content="https://swapankirantrust.in/coverpage.jpg">
+  <meta property="og:url" content="https://swapankirantrust.in/failure.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Donation Failed | Swapan Kiran Trust">
+  <meta name="twitter:description" content="We're sorry, but your donation could not be processed. Please try again or contact us for assistance.">
+  <meta name="twitter:image" content="https://swapankirantrust.in/coverpage.jpg">
+
+  <!-- Analytics -->
+  <script defer data-domain="swapankirantrust.in" src="https://plausible.io/js/plausible.js"></script>
+</head>
+
+<body class="bg-amber-50 min-h-screen flex flex-col text-gray-800 text-base leading-relaxed">
+
+  <!-- Navbar -->
+  <nav style="position: sticky; top: 0; z-index: 50;" class="bg-gradient-to-r from-amber-500 to-amber-400 text-white px-8 py-4 shadow-lg"
+    x-data="{ open: false }">
+    <div class="flex justify-between items-center">
+      <!-- Trust Name on the left -->
+      <div class="main_title text-amber-700 text-lg md:text-xl font-extrabold tracking-tight">Swapan Kiran Trust</div>
+      <!-- Navigation links on the right -->
+      <div class="hidden sm:flex space-x-8 text-lg font-semibold ml-auto">
+        <a href="/" class="flex items-center hover:underline hover:text-amber-100 transition-colors duration-200">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M4 10v10a1 1 0 001 1h3m10-11v11a1 1 0 01-1 1h-3m-6 0h6" />
+          </svg>
+          Home
+        </a>
+        <a href="/about.html" class="flex items-center hover:underline hover:text-amber-100 transition-colors duration-200">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+          About Us
+        </a>
+        <a href="/contact.html" class="flex items-center hover:underline hover:text-amber-100 transition-colors duration-200">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          Contact Us
+        </a>
+      </div>
+      <!-- Hamburger -->
+      <button @click="open = !open" class="sm:hidden focus:outline-none ml-4">
+        <svg x-show="!open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg x-show="open" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div x-show="open" x-transition class="sm:hidden mt-4 space-y-2 text-lg font-semibold">
+      <a href="/" class="block px-2 py-1 hover:bg-amber-600 rounded transition-colors duration-200">
+        <img src="./images/home.png" alt="Home" class="inline-block w-5 h-5 align-middle mr-1" />
+        Home
+      </a>
+      <a href="/about.html" class="block px-2 py-1 hover:bg-amber-600 rounded transition-colors duration-200">
+        <img src="./images/about.png" alt="About Us" class="inline-block w-5 h-5 align-middle mr-1" />
+        About Us
+      </a>
+      <a href="/contact.html" class="block px-2 py-1 hover:bg-amber-600 rounded transition-colors duration-200">
+        <img src="./images/contact.png" alt="Contact Us" class="inline-block w-5 h-5 align-middle mr-1" />
+        Contact Us
+      </a>
+    </div>
+  </nav>
+
+  <!-- Failure Content -->
+  <main class="flex-grow flex items-center justify-center px-4 py-8">
+    <div class="max-w-2xl mx-auto text-center page-content">
+      <!-- Failure Icon -->
+      <div class="mb-8">
+        <div class="failure-icon inline-flex items-center justify-center w-24 h-24 bg-red-100 rounded-full mb-6">
+          <svg class="w-12 h-12 text-red-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Failure Message -->
+      <h1 class="headline text-4xl md:text-5xl font-bold text-red-600 mb-6">
+        Payment Failed 😔
+      </h1>
+      
+      <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+          We're Sorry, Your Donation Could Not Be Processed
+        </h2>
+        
+        <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+          We encountered an issue while processing your donation. This could be due to network issues, 
+          payment gateway problems, or other technical difficulties. Please try again or contact us for assistance.
+        </p>
+
+        <div class="bg-red-50 rounded-lg p-4 mb-6">
+          <p class="text-red-800 font-medium">
+            💡 Don't worry - your payment has not been charged. You can safely try again.
+          </p>
+        </div>
+
+        <div class="text-sm text-gray-600">
+          <p>If this problem persists, please contact us on WhatsApp for immediate assistance.</p>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/#donate" 
+           class="inline-flex items-center justify-center px-8 py-3 bg-amber-600 text-white font-semibold rounded-lg hover:bg-amber-700 transition-colors duration-200 shadow-md hover:shadow-lg">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+          Try Again
+        </a>
+        
+        <a href="https://wa.me/9648087903?text=Hello%21%20I%20had%20trouble%20with%20my%20donation%20payment.%20Can%20you%20help%3F" 
+           target="_blank"
+           class="inline-flex items-center justify-center px-8 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors duration-200 shadow-md hover:shadow-lg">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+          Get Help on WhatsApp
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-amber-600 text-white py-8 border-t border-amber-700">
+    <div
+      class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center md:items-start text-center md:text-left space-y-6 md:space-y-0">
+
+      <!-- Foundation Name and Address -->
+      <div>
+        <h2 class="text-xl font-semibold">Swapan Kiran Trust</h2>
+        <p class="mt-2 text-sm leading-relaxed">
+          Badahar Kala, Harraiya,<br>
+          Basti, Uttar Pradesh - 272155
+        </p>
+      </div>
+
+      <!-- Social Links with CTA and Icons -->
+      <div class="flex flex-col items-center md:items-start space-y-2">
+        <span class="font-semibold mb-1">Follow us for stories & updates!</span>
+        <a href="https://www.instagram.com/villagetuition4321?igsh=MXUwY3NjZzNkYWo1ag==" target="_blank" class="flex items-center hover:underline">
+          <svg class="w-5 h-5 mr-2 fill-current" viewBox="0 0 24 24">
+            <path
+            d="M12 2.2c3.2 0 3.584.012 4.85.07 1.17.056 1.97.24 2.43.41.59.22 1.01.48 1.45.92.44.44.7.86.92 1.45.17.46.354 1.26.41 2.43.058 1.266.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.97-.41 2.43-.22.59-.48 1.01-.92 1.45-.44.44-.86.7-1.45.92-.46.17-1.26.354-2.43.41-1.266.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.24-2.43-.41-.59-.22-1.01-.48-1.45-.92-.44-.44-.7-.86-.92-1.45-.17-.46-.354-1.26-.41-2.43C2.212 15.784 2.2 15.4 2.2 12s.012-3.584.07-4.85c.056-1.17.24-1.97.41-2.43.22-.59.48-1.01.92-1.45.44-.44.86-.7 1.45-.92.46-.17 1.26-.354 2.43-.41C8.416 2.212 8.8 2.2 12 2.2zm0-2.2C8.736 0 8.332.013 7.052.072 5.77.13 4.802.31 4.01.6c-.8.29-1.48.68-2.16 1.36C1.13 2.64.74 3.32.45 4.12c-.29.79-.47 1.76-.53 3.04C-.013 8.332 0 8.736 0 12c0 3.264.013 3.668.072 4.948.058 1.282.24 2.25.53 3.04.29.8.68 1.48 1.36 2.16.68.68 1.36 1.07 2.16 1.36.79.29 1.76.47 3.04.53C8.332 23.987 8.736 24 12 24s3.668-.013 4.948-.072c1.282-.058 2.25-.24 3.04-.53.8-.29 1.48-.68 2.16-1.36.68-.68 1.07-1.36 1.36-2.16.29-.79.47-1.76.53-3.04.059-1.28.072-1.684.072-4.948 0-3.264-.013-3.668-.072-4.948-.058-1.282-.24-2.25-.53-3.04-.29-.8-.68-1.48-1.36-2.16-.68-.68-1.36-1.07-2.16-1.36-.79-.29-1.76-.47-3.04-.53C15.668.013 15.264 0 12 0z" />
+            <path
+              d="M12 5.838A6.162 6.162 0 1 0 12 18.162 6.162 6.162 0 1 0 12 5.838zm0 10.162A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z" />
+          </svg>
+          Instagram
+        </a>
+        <a href="https://www.youtube.com/@villagetuition432" target="_blank" class="flex items-center hover:underline">
+          <svg class="w-5 h-5 mr-2 fill-current" viewBox="0 0 24 24">
+            <path
+              d="M23.498 6.186a2.994 2.994 0 0 0-2.108-2.116C19.425 3.5 12 3.5 12 3.5s-7.425 0-9.39.57A2.994 2.994 0 0 0 .502 6.186C0 8.15 0 12 0 12s0 3.85.502 5.814a2.994 2.994 0 0 0 2.108 2.116C4.575 20.5 12 20.5 12 20.5s7.425 0 9.39-.57a2.994 2.994 0 0 0 2.108-2.116C24 15.85 24 12 24 12s0-3.85-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+          </svg>
+          YouTube
+        </a>
+      </div>
+
+      <!-- WhatsApp Button with Subtitle and Icon -->
+      <div class="flex flex-col items-center md:items-start space-y-2">
+        <span class="font-semibold mb-1">Questions? Message us on WhatsApp!</span>
+        <a href="https://wa.me/9648087903?text=Hello%21%20I%20tried%20to%20make%20a%20payment%2C%20but%20was%20not%20able%20to%20complete%20it." target="_blank"
+          class="inline-flex items-center bg-white text-amber-600 font-semibold px-5 py-2 rounded-full shadow-md hover:bg-amber-50 hover:scale-105 transform transition-all duration-300">
+          <svg class="w-5 h-5 mr-2" viewBox="0 0 32 32" fill="currentColor">
+            <path
+              d="M16 3C9.373 3 4 8.373 4 15c0 2.637.86 5.08 2.34 7.09L4 29l7.18-2.31A12.94 12.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3zm0 22c-1.98 0-3.89-.52-5.54-1.5l-.39-.23-4.27 1.37 1.4-4.15-.25-.4A9.94 9.94 0 0 1 6 15c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm5.07-7.75c-.28-.14-1.65-.81-1.9-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.08-.16.18-.32.2-.6.07-.28-.14-1.18-.44-2.25-1.4-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.34.42-.51.14-.17.18-.29.28-.48.09-.19.05-.36-.02-.5-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47-.16-.01-.35-.01-.54-.01-.19 0-.5.07-.76.34-.26.27-1 1-.99 2.43.01 1.43 1.03 2.81 1.18 3.01.15.2 2.03 3.1 4.93 4.22.69.3 1.23.48 1.65.61.69.22 1.32.19 1.81.12.55-.08 1.65-.67 1.88-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.19-.53-.33z" />
+          </svg>
+          Chat with Us
+        </a>
+      </div>
+    </div>
+    <div class="text-center text-xs text-amber-100 mt-8">© 2024 Swapan Kiran Trust. All rights reserved.</div>
+  </footer>
+
+</body>
+
+</html>

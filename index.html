@@ -260,10 +260,11 @@
     }
 
     const data = await res.json();
+    console.log(data);
 
     const fields = {
       key: data.key,
-      txnid: data.txnId,
+      txnid: data.txnid,
       amount: data.amount,
       productinfo: data.productinfo,
       firstname: data.firstname,

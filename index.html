@@ -148,7 +148,8 @@
       <div class="mt-6 max-w-md mx-auto">
         <input id="donorName" type="text" placeholder="Your Name" class="w-full px-4 py-2 mb-2 border rounded" />
         <input id="donorEmail" type="email" placeholder="Your Email" class="w-full px-4 py-2 mb-2 border rounded" />
-        <input id="donorPhone" type="tel" placeholder="Your Phone No." class="w-full px-4 py-2 mb-6 border rounded" />
+        <input id="donorPhone" type="tel" placeholder="Your Phone No." class="w-full px-4 py-2 mb-2 border rounded" />
+        <input id="panNo" type="text" placeholder="Your PAN No." class="w-full px-4 py-2 mb-6 border rounded" />
         <input id="donationAmount" type="number" placeholder="Amount in INR" class="w-full px-4 py-2 border rounded" />
         <p id="errorMessage" class="text-red-600 text-sm hidden">Please fill out all fields correctly.</p>
       </div>
@@ -233,6 +234,7 @@
   const name = document.getElementById('donorName').value.trim();
   const email = document.getElementById('donorEmail').value.trim();
   const phone = document.getElementById('donorPhone').value.trim();
+  const panNo = document.getElementById('panNo').value.trim();
   const amount = document.getElementById('donationAmount').value.trim();
   const errorMessage = document.getElementById('errorMessage');
   const donateBtn = document.getElementById('donateBtn');
@@ -252,7 +254,7 @@
     const res = await fetch("https://mhyvujeihfasezyqovhu.supabase.co/functions/v1/create-payment", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, phone, amount })
+      body: JSON.stringify({ name, email, phone, panNo, amount })
     });
 
     if (!res.ok) {

@@ -146,11 +146,11 @@
       <p class="mt-4 max-w-xl mx-auto text-lg text-gray-800">Join us in giving underprivileged students the education
         they deserve. Every rupee brings us closer to building their future.</p>
       <div class="mt-6 max-w-md mx-auto">
-        <input id="donorName" type="text" placeholder="Your Name" class="w-full px-4 py-2 mb-2 border rounded" />
-        <input id="donorEmail" type="email" placeholder="Your Email" class="w-full px-4 py-2 mb-2 border rounded" />
-        <input id="donorPhone" type="tel" placeholder="Your Phone No." class="w-full px-4 py-2 mb-2 border rounded" />
-        <input id="panNo" type="text" placeholder="Your PAN No." class="w-full px-4 py-2 mb-6 border rounded" />
-        <input id="donationAmount" type="number" placeholder="Amount in INR" class="w-full px-4 py-2 border rounded" />
+        <input id="donorName" required type="text" placeholder="Your Name" class="w-full px-4 py-2 mb-2 border rounded" />
+        <input id="donorEmail" required type="email" placeholder="Your Email" class="w-full px-4 py-2 mb-2 border rounded" />
+        <input id="donorPhone"required  maxlength="10" type="tel" placeholder="Your Phone No." class="w-full px-4 py-2 mb-2 border rounded" />
+        <input id="panNo" maxlength="10" type="text" placeholder="Your PAN No." class="w-full px-4 py-2 mb-6 border rounded" />
+        <input id="donationAmount" required type="number" placeholder="Amount in INR" class="w-full px-4 py-2 border rounded" />
         <p id="errorMessage" class="text-red-600 text-sm hidden">Please fill out all fields correctly.</p>
       </div>
       <button id="donateBtn" onclick="donateNow();"
@@ -239,22 +239,70 @@
   const errorMessage = document.getElementById('errorMessage');
   const donateBtn = document.getElementById('donateBtn');
 
-  if (!name || !email || !phone || !amount || isNaN(amount) || parseInt(amount) <= 0) {
-    errorMessage.classList.remove('hidden');
-    return;
-  }
+  const emailRegex =
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  errorMessage.classList.add('hidden');
-  playDing();  // Optional audio feedback
+const phoneRegex =
+  /^\d{10}$/;
+
+const panRegex =
+  /^[A-Z]{5}[0-9]{4}[A-Z]$/;
+
+if (!name) {
+  errorMessage.innerText =
+    "Please enter your name.";
+  errorMessage.classList.remove('hidden');
+  return;
+}
+
+if (!emailRegex.test(email)) {
+  errorMessage.innerText =
+    "Please enter a valid email address.";
+  errorMessage.classList.remove('hidden');
+  return;
+}
+
+if (!phoneRegex.test(phone)) {
+  errorMessage.innerText =
+    "Please enter a valid 10-digit Indian phone number.";
+  errorMessage.classList.remove('hidden');
+  return;
+}
+
+if (
+  panNo &&
+  !panRegex.test(panNo.toUpperCase())
+) {
+  errorMessage.innerText =
+    "Please enter a valid PAN number.";
+  errorMessage.classList.remove('hidden');
+  return;
+}
+
+if (
+  !amount ||
+  isNaN(amount) ||
+  Number(amount) <= 0
+) {
+  errorMessage.innerText =
+    "Please enter a valid donation amount.";
+  errorMessage.classList.remove('hidden');
+  return;
+}
+
+errorMessage.classList.add('hidden');
+playDing();  // Optional audio feedback
 
   donateBtn.disabled = true;
   donateBtn.textContent = 'Processing...';
 
+const pan = panNo.toUpperCase();
+
   try {
-    const res = await fetch("https://mhyvujeihfasezyqovhu.supabase.co/functions/v1/create-payment", {
+    const res = await fetch("https://swapan-payu-backend.apoorvmittal125.workers.dev/create-payment", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, phone, panNo, amount })
+      body: JSON.stringify({ name, email, phone, pan, amount })
     });
 
     if (!res.ok) {

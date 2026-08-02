@@ -431,30 +431,11 @@ const pan = panNo.toUpperCase();
         Smiles. Celebrations. Breakthroughs. Here's a glimpse of the everyday joy your support brings to our children.
       </p>
     </div>
-    <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-      <button onclick="openLightbox(0)"
-        class="overflow-hidden rounded-3xl shadow-lg transition-transform duration-300 hover:scale-105">
-        <img src="/images/gallery/gallery1.jpg" alt="Kids playing in the courtyard" class="w-full h-64 object-cover">
-      </button>
-      <button onclick="openLightbox(1)"
-        class="overflow-hidden rounded-3xl shadow-lg transition-transform duration-300 hover:scale-105">
-        <img src="/images/gallery/gallery2.jpg" alt="Art class in progress" class="w-full h-64 object-cover">
-      </button>
-      <button onclick="openLightbox(2)"
-        class="overflow-hidden rounded-3xl shadow-lg transition-transform duration-300 hover:scale-105">
-        <img src="/images/gallery/gallery3.jpg" alt="Midday meal being served" class="w-full h-64 object-cover">
-      </button>
-      <button onclick="openLightbox(3)"
-        class="overflow-hidden rounded-3xl shadow-lg transition-transform duration-300 hover:scale-105">
-        <img src="/images/gallery/gallery4.jpg" alt="Volunteers teaching students" class="w-full h-64 object-cover">
-      </button>
-      <button onclick="openLightbox(4)"
-        class="overflow-hidden rounded-3xl shadow-lg transition-transform duration-300 hover:scale-105">
-        <img src="/images/gallery/gallery5.jpg" alt="Children laughing together" class="w-full h-64 object-cover">
-      </button>
-      <button onclick="openLightbox(5)"
-        class="overflow-hidden rounded-3xl shadow-lg transition-transform duration-300 hover:scale-105">
-        <img src="/images/gallery/gallery6.jpg" alt="A festival celebration at school" class="w-full h-64 object-cover">
+    <div id="galleryGrid" class="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto"></div>
+    <div class="text-center mt-10">
+      <button id="loadMoreBtn"
+        class="px-8 py-3 bg-amber-600 text-white text-lg rounded-xl hover:bg-amber-700 transition duration-200">
+        Load More
       </button>
     </div>
   </section>
@@ -480,87 +461,8 @@ const pan = panNo.toUpperCase();
     </div>
   </div>
 
-  <!-- click on the gallery images to open the lightbox -->
-  <script>
-    const images = [
-      { src: "/images/gallery1.jpg", caption: "Learning, together, on steps" },
-      { src: "/images/gallery2.jpg", caption: "Field trip, outdoor learning" },
-      { src: "/images/gallery3.jpg", caption: "Dedicated learning space" },
-      { src: "/images/gallery4.jpg", caption: "Champions, winning smiles" },
-      { src: "/images/gallery5.jpg", caption: "Books, bright futures" },
-      { src: "/images/gallery6.jpg", caption: "Exploring, outdoor adventure" },
-    ];
-
-    let currentIndex = 0;
-    let startX = null;
-
-    function openLightbox(index) {
-      currentIndex = index;
-      updateLightbox();
-      document.getElementById('lightboxModal').classList.remove('hidden');
-    }
-
-    function closeLightbox() {
-      document.getElementById('lightboxModal').classList.add('hidden');
-    }
-
-    function nextImage() {
-      currentIndex = (currentIndex + 1) % images.length;
-      updateLightbox(true);
-    }
-
-    function prevImage() {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      updateLightbox(true);
-    }
-
-    function updateLightbox(animate = false) {
-      const imageEl = document.getElementById('lightboxImage');
-      const image = images[currentIndex];
-      if (animate) {
-        imageEl.classList.remove('opacity-100');
-        imageEl.classList.add('opacity-0');
-        setTimeout(() => {
-          imageEl.src = image.src;
-          imageEl.alt = image.caption;
-          document.getElementById('lightboxCaption').innerText = image.caption;
-          document.getElementById('imageCounter').innerText = `${currentIndex + 1} of ${images.length}`;
-          imageEl.onload = () => {
-            imageEl.classList.remove('opacity-0');
-            imageEl.classList.add('opacity-100');
-          };
-        }, 150);
-      } else {
-        imageEl.src = image.src;
-        imageEl.alt = image.caption;
-        document.getElementById('lightboxCaption').innerText = image.caption;
-        document.getElementById('imageCounter').innerText = `${currentIndex + 1} of ${images.length}`;
-        imageEl.classList.add('opacity-100');
-      }
-    }
-
-    document.getElementById('lightboxImage').addEventListener('click', nextImage);
-
-    document.addEventListener('keydown', function (event) {
-      const modal = document.getElementById('lightboxModal');
-      if (!modal.classList.contains('hidden')) {
-        if (event.key === 'ArrowRight') nextImage();
-        if (event.key === 'ArrowLeft') prevImage();
-        if (event.key === 'Escape') closeLightbox();
-      }
-    });
-
-    // Touch swipe support
-    const modal = document.getElementById('lightboxModal');
-    modal.addEventListener('touchstart', (e) => startX = e.touches[0].clientX);
-    modal.addEventListener('touchend', (e) => {
-      if (startX === null) return;
-      const endX = e.changedTouches[0].clientX;
-      if (startX - endX > 50) nextImage();
-      else if (endX - startX > 50) prevImage();
-      startX = null;
-    });
-  </script>
+  <!-- Gallery data + lightbox, driven by images/gallery/gallery-data.json -->
+  <script src="/js/gallery.js" defer></script>
 
   <!-- Footer -->
   <footer class="bg-amber-600 text-white py-8 border-t border-amber-700">
